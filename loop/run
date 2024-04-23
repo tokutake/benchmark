@@ -14,6 +14,6 @@ echo $(node --version)
 echo $(time node loop.mjs ${upper})
 
 echo $(clang++ --version)
-echo $(clang++ -std=c++11 loop.cpp -o loop_cpp)
+echo $(clang++ -std=c++11 -O3 loop.cpp -o loop_cpp)
 echo $(time ./loop_cpp ${upper})
 echo $(rm ./loop_cpp)
