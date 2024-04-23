@@ -6,6 +6,7 @@
 # upper limit number pass to program as a argument
 upper=1000000000
 
+eval "$(rbenv init - bash)"
 echo $(ruby --version)
 echo $(time ruby loop.rb ${upper})
 
