@@ -6,14 +6,17 @@
 # upper limit number pass to program as a argument
 upper=1000000000
 
+echo "===> Use latest version of ruby"
 eval "$(rbenv init - bash)"
-echo $(ruby --version)
-echo $(time ruby loop.rb ${upper})
+ruby --version
+time ruby loop.rb ${upper}
 
-echo $(node --version)
-echo $(time node loop.mjs ${upper})
+echo "===> JavaScript using node runtime"
+node --version
+time node loop.mjs ${upper}
 
-echo $(clang++ --version)
-echo $(clang++ -std=c++11 -O3 loop.cpp -o loop_cpp)
-echo $(time ./loop_cpp ${upper})
-echo $(rm ./loop_cpp)
+echo "===> C++ with -O3 optimization"
+clang++ --version
+clang++ -std=c++11 -O3 loop.cpp -o loop_cpp
+time ./loop_cpp ${upper}
+rm ./loop_cpp
