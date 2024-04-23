@@ -10,13 +10,16 @@ echo "===> Use latest version of ruby"
 eval "$(rbenv init - bash)"
 ruby --version
 time ruby loop.rb ${upper}
+echo
 
 echo "===> JavaScript using node runtime"
 node --version
 time node loop.mjs ${upper}
+echo
 
 echo "===> C++ with -O3 optimization"
 clang++ --version
 clang++ -std=c++11 -O3 loop.cpp -o loop_cpp
 time ./loop_cpp ${upper}
 rm ./loop_cpp
+echo
