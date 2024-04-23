@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Run all language programs and print time.
+# Pass common upper limit and each program calculation sum of 0 to upper limit.
+
+# upper limit number pass to program as a argument
+upper=1000000000
+
+echo $(ruby --version)
+echo $(time ruby loop.rb ${upper})
+
+echo $(node --version)
+echo $(time node loop.mjs ${upper})
+
+echo $(clang++ --version)
+echo $(clang++ -std=c++11 loop.cpp -o loop_cpp)
+echo $(time ./loop_cpp ${upper})
+echo $(rm ./loop_cpp)
