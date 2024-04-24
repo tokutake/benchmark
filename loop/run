@@ -6,6 +6,15 @@
 # upper limit number pass to program as a argument
 upper=1000000000
 
+# to reduce runtime override upper bound if argument is test
+if [ "$1" == "test" ]; then
+  upper=10
+fi
+
+echo "===> Upper limit"
+echo ${upper}
+echo
+
 echo "===> Use latest version of ruby"
 eval "$(rbenv init - bash)"
 ruby --version
