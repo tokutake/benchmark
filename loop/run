@@ -7,7 +7,7 @@
 upper=1000000000
 
 # to reduce runtime override upper bound if argument is test
-if [ "$1" == "test" ]; then
+if [[ "$1" == "test" ]]; then
   upper=10
 fi
 
