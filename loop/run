@@ -33,10 +33,28 @@ time ./loop_cpp ${upper}
 rm ./loop_cpp
 echo
 
-echo "===> zig run loop.zig"
+echo "===> zig build loop.zig"
 cd zig
 zig version
 zig build
 time echo $upper | ./zig-out/bin/zig
+echo
+cd ..
+
+echo "===> zig build loop.zig -O ReleaseFast"
+cd zig
+zig version
+zig build-exe src/main.zig -O ReleaseFast
+time echo $upper | ./main
+rm main main.o
+echo
+cd ..
+
+echo "===> zig build loop.zig -O ReleaseSafe"
+cd zig
+zig version
+zig build-exe src/main.zig -O ReleaseSafe
+time echo $upper | ./main
+rm main main.o
 echo
 cd ..
