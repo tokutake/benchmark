@@ -15,12 +15,6 @@ echo "===> Upper limit"
 echo ${upper}
 echo
 
-echo "===> Use latest version of ruby"
-eval "$(rbenv init - bash)"
-ruby --version
-time ruby loop.rb ${upper}
-echo
-
 echo "===> JavaScript using node runtime"
 node --version
 time node loop.mjs ${upper}
@@ -58,3 +52,10 @@ time echo $upper | ./main
 rm main main.o
 echo
 cd ..
+
+echo "===> Use latest version of ruby"
+eval "$(rbenv init - bash)"
+ruby --version
+time ruby loop.rb ${upper}
+echo
+
