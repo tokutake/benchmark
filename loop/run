@@ -4,7 +4,7 @@
 # Pass common upper limit and each program calculation sum of 0 to upper limit.
 
 # upper limit number pass to program as a argument
-upper=1000000000
+upper=1000000002
 
 # to reduce runtime override upper bound if argument is test
 if [[ "$1" == "test" ]]; then
@@ -20,11 +20,23 @@ node --version
 time node loop.mjs ${upper}
 echo
 
+echo "===> JavaScript using bun runtime"
+node --version
+time $HOME/.bun/bin/bun loop.mjs ${upper}
+echo
+
 echo "===> C++ with -O3 optimization"
 clang++ --version
 clang++ -std=c++11 -O3 loop.cpp -o loop_cpp
 time ./loop_cpp ${upper}
 rm ./loop_cpp
+echo
+
+echo "===> Rust with opt-level=2"
+rustc --version
+rustc -O loop.rs
+time ./loop ${upper}
+rm ./loop
 echo
 
 echo "===> zig build loop.zig"
