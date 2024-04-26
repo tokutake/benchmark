@@ -34,5 +34,9 @@ rm ./loop_cpp
 echo
 
 echo "===> zig run loop.zig"
+cd zig
 zig version
-time echo $upper | zig run loop.zig
+zig build
+time echo $upper | ./zig-out/bin/zig
+echo
+cd ..
