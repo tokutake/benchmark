@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Run all language programs and print time.
+# Pass common upper limit and each program calculation sum of 0 to upper limit.
+
+# max number pass to program as a argument
+max=100000
+
+# set max from argument
+if [[ -n "$1" ]]; then
+  max="$1"
+fi
+
+echo "===> max"
+echo ${max}
+echo
+
+echo "===> C++ with -O3 optimization"
+clang++ --version
+clang++ -std=c++11 -O3 double_loop.cpp -o double_loop_cpp
+time ./double_loop_cpp ${max}
+rm ./double_loop_cpp
+echo
+
+echo "===> zig build loop.zig -O ReleaseFast"
+cd zig
+zig version
+zig build-exe src/main.zig -O ReleaseFast
+time echo $max | ./main
+rm main main.o
+echo
+cd ..
+
+echo "===> Rust with opt-level=2"
+rustc --version
+rustc -O double_loop.rs
+time ./double_loop ${max}
+rm ./double_loop
+echo
+
+rbenv_root=$(rbenv root)
+
+echo "===> Ruby"
+ruby --version
+time ruby double_loop.rb ${max}
+echo
+
+echo "===> TypeScript using deno runtime"
+deno --version
+time deno run double_loop.ts ${max}
+echo
