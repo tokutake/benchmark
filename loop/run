@@ -6,9 +6,9 @@
 # upper limit number pass to program as a argument
 upper=1000000002
 
-# to reduce runtime override upper bound if argument is test
-if [[ "$1" == "test" ]]; then
-  upper=10
+# set limit from argument
+if [[ -n "$1" ]]; then
+  upper="$1"
 fi
 
 echo "===> Upper limit"
