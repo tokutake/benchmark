@@ -55,10 +55,16 @@ rm main main.o
 echo
 cd ..
 
-echo "===> Use latest version of ruby"
-eval "$(rbenv init - bash)"
-ruby --version
-time ruby loop.rb ${upper}
+rbenv_root=$(rbenv root)
+
+echo "===> Ruby 2.7.7"
+eval ${rbenv_root}/versions/2.7.7/bin/ruby --version
+time ${rbenv_root}/versions/2.7.7/bin/ruby loop.rb ${upper}
+echo
+
+echo "===> Ruby 3.3.1"
+eval ${rbenv_root}/versions/3.3.1/bin/ruby --version
+time ${rbenv_root}/versions/3.3.1/bin/ruby loop.rb ${upper}
 echo
 
 echo "===> JavaScript using node runtime"
