@@ -38,6 +38,13 @@ time ./double_loop ${max}
 rm ./double_loop
 echo
 
+echo "====> Java"
+java -version
+cd java
+time java Main.java ${max}
+echo
+cd ..
+
 echo "===> Go "
 cd go
 time go run main.go -max=${max}
