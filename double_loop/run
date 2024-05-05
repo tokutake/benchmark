@@ -38,6 +38,17 @@ time ./double_loop ${max}
 rm ./double_loop
 echo
 
+echo "===> Go "
+cd go
+time go run main.go -max=${max}
+echo
+cd ..
+
+echo "===> TypeScript using deno runtime"
+deno --version
+time deno run double_loop.ts ${max}
+echo
+
 rbenv_root=$(rbenv root)
 
 echo "===> Ruby"
@@ -45,7 +56,3 @@ ruby --version
 time ruby double_loop.rb ${max}
 echo
 
-echo "===> TypeScript using deno runtime"
-deno --version
-time deno run double_loop.ts ${max}
-echo
