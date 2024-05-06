@@ -16,10 +16,10 @@ echo ${upper}
 echo
 
 echo "===> C++ with -O3 optimization"
-clang++ --version
-clang++ -std=c++11 -O3 loop.cpp -o loop_cpp
-time ./loop_cpp ${upper}
-rm ./loop_cpp
+cd cpp
+bazel build loop
+time ./bazel-bin/loop ${upper}
+cd ..
 echo
 
 echo "===> Rust with opt-level=2"

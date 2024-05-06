@@ -1,3 +1,9 @@
 zig-cache
 zig-out
 .DS_STORE
+bazel-bin
+bazel-cpp
+bazel-out
+bazel-testlogs
+MODULE.bazel
+MODULE.bazel.lock
