@@ -17,7 +17,7 @@ pub fn main() !void {
     };
 
     var sum: i64 = 0;
-    var upper: i64 = input_number;
+    const upper: i64 = input_number;
     var i: i64 = 0;
     while (i <= upper) {
         sum += i;
