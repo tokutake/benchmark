@@ -15,9 +15,9 @@ echo "===> Upper limit"
 echo ${upper}
 echo
 
-echo "===> C++ with -O3 optimization"
+echo "===> C++"
 cd cpp
-bazel build loop
+bazel build loop --compilation_mode opt
 time ./bazel-bin/loop ${upper}
 cd ..
 echo
