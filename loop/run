@@ -58,7 +58,7 @@ cd ..
 echo "===> Nim"
 cd nim
 nim --version
-nim c main.nim
+nim c --opt:speed main.nim
 time ./main $upper
 rm main
 echo
