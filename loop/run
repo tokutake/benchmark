@@ -17,7 +17,7 @@ echo
 
 echo "===> C++"
 cd cpp
-bazel build loop --compilation_mode opt
+bazel build --compilation_mode opt
 time ./bazel-bin/loop ${max}
 cd ..
 echo
