@@ -29,7 +29,7 @@ time ./loop ${max}
 rm ./loop
 echo
 
-echo "===> zig build loop.zig -O ReleaseFast"
+echo "===> Zig build loop.zig -O ReleaseFast"
 cd zig
 zig version
 zig build-exe src/main.zig -O ReleaseFast
