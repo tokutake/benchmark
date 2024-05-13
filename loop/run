@@ -1,31 +1,31 @@
 #!/bin/bash
 #
-# Run all language programs and print time.
-# Pass common upper limit and each program calculation sum of 0 to upper limit.
+# Run all language programs and print execution time.
+# Each language programs calculate sum of 0 to max.
 
-# upper limit number pass to program as a argument
-upper=1000000002
+# max number for the loop
+max=1000000002
 
-# set limit from argument
+# set max from bash argument
 if [[ -n "$1" ]]; then
-  upper="$1"
+  max="$1"
 fi
 
-echo "===> Upper limit"
-echo ${upper}
+echo "===> max"
+echo ${max}
 echo
 
 echo "===> C++"
 cd cpp
 bazel build loop --compilation_mode opt
-time ./bazel-bin/loop ${upper}
+time ./bazel-bin/loop ${max}
 cd ..
 echo
 
 echo "===> Rust with opt-level=2"
 rustc --version
 rustc -O loop.rs
-time ./loop ${upper}
+time ./loop ${max}
 rm ./loop
 echo
 
@@ -33,7 +33,7 @@ echo "===> zig build loop.zig"
 cd zig
 zig version
 zig build
-time echo $upper | ./zig-out/bin/zig
+time echo $max | ./zig-out/bin/zig
 echo
 cd ..
 
@@ -41,7 +41,7 @@ echo "===> zig build loop.zig -O ReleaseFast"
 cd zig
 zig version
 zig build-exe src/main.zig -O ReleaseFast
-time echo $upper | ./main
+time echo $max | ./main
 rm main main.o
 echo
 cd ..
@@ -50,7 +50,7 @@ echo "===> zig build loop.zig -O ReleaseSafe"
 cd zig
 zig version
 zig build-exe src/main.zig -O ReleaseSafe
-time echo $upper | ./main
+time echo $max | ./main
 rm main main.o
 echo
 cd ..
@@ -59,7 +59,7 @@ echo "===> Nim"
 cd nim
 nim --version
 nim c --opt:speed main.nim
-time ./main $upper
+time ./main $max
 rm main
 echo
 cd ..
@@ -68,20 +68,20 @@ rbenv_root=$(rbenv root)
 
 echo "===> Ruby 2.7.7"
 eval ${rbenv_root}/versions/2.7.7/bin/ruby --version
-time ${rbenv_root}/versions/2.7.7/bin/ruby loop.rb ${upper}
+time ${rbenv_root}/versions/2.7.7/bin/ruby loop.rb ${max}
 echo
 
 echo "===> Ruby 3.3.1"
 eval ${rbenv_root}/versions/3.3.1/bin/ruby --version
-time ${rbenv_root}/versions/3.3.1/bin/ruby loop.rb ${upper}
+time ${rbenv_root}/versions/3.3.1/bin/ruby loop.rb ${max}
 echo
 
 echo "===> JavaScript using node runtime"
 node --version
-time node loop.mjs ${upper}
+time node loop.mjs ${max}
 echo
 
 echo "===> JavaScript using bun runtime"
 node --version
-time $HOME/.bun/bin/bun loop.mjs ${upper}
+time $HOME/.bun/bin/bun loop.mjs ${max}
 echo
