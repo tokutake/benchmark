@@ -55,6 +55,15 @@ rm main main.o
 echo
 cd ..
 
+echo "===> Nim"
+cd nim
+nim --version
+nim c main.nim
+time ./main $upper
+rm main
+echo
+cd ..
+
 rbenv_root=$(rbenv root)
 
 echo "===> Ruby 2.7.7"
