@@ -47,6 +47,11 @@ rm main
 echo
 cd ..
 
+echo "===> Python"
+python3 --version
+time python3 loop.py $max
+echo
+
 rbenv_root=$(rbenv root)
 
 echo "===> Ruby 2.7.7"
