@@ -56,6 +56,12 @@ deno --version
 time deno run double_loop.ts ${max}
 echo
 
+
+echo "===> Python"
+python3 --version
+time python3 double_loop.py ${max}
+echo
+
 rbenv_root=$(rbenv root)
 
 echo "===> Ruby"
